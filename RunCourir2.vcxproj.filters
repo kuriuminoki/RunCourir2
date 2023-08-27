@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Api">
+      <UniqueIdentifier>{85c13176-15c0-4121-ad03-a18607a9e4f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Ui">
+      <UniqueIdentifier>{e0005cee-4452-4ae7-b2d2-fd779cbd3374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Domain">
+      <UniqueIdentifier>{7ad41a69-04b4-47ab-8735-c4979720537d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Api">
+      <UniqueIdentifier>{8a1e1aa4-04de-4d3c-a74d-863716339c48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Ui">
+      <UniqueIdentifier>{381c417f-f91d-43d8-b119-dbedf25b5372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Domain">
+      <UniqueIdentifier>{54e712ee-3b77-4f2a-b18d-8eef5d0923c4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Control.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationDrawer.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>ソース ファイル\Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="Brain.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterDrawer.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDrawer.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>ソース ファイル\Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphHandle.cpp">
+      <Filter>ソース ファイル\Domain</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectDrawer.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="TextDrawer.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldDrawer.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterAction.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterController.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerRecorder.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="CsvReader.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLoader.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Story.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>ソース ファイル\Api</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Define.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>ヘッダー ファイル\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationDrawer.h">
+      <Filter>ヘッダー ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="Brain.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>ヘッダー ファイル\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterDrawer.h">
+      <Filter>ヘッダー ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDrawer.h">
+      <Filter>ヘッダー ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectDrawer.h">
+      <Filter>ヘッダー ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="TextDrawer.h">
+      <Filter>ヘッダー ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldDrawer.h">
+      <Filter>ヘッダー ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphHandle.h">
+      <Filter>ヘッダー ファイル\Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterAction.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterController.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Control.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerRecorder.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="CsvReader.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLoader.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Story.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>ヘッダー ファイル\Api</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
