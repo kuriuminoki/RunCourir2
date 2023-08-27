@@ -43,6 +43,17 @@ void CharacterDrawer::drawCharacter(const Camera* const camera, int bright) {
 	camera->setCamera(&x, &y, &ex);
 
 	// 描画
+	const RunnerGraphHandle* runnerGraph = character->getCharacterGraphHandle()->getRunnerGraphHandle();
+	// 奥の髪
+	if (runnerGraph != nullptr) {
+		const GraphHandle* handle = runnerGraph->getBackHair();
+		if (handle != nullptr) {
+			const int* color = runnerGraph->getHairColor();
+			handle->draw(x, y, ex, color[0], color[1], color[2]);
+			SetDrawBright(bright, bright, bright);
+		}
+	}
+	// 素体
 	if (m_characterAction->getState() == CHARACTER_STATE::DAMAGE && ++m_cnt / 2 % 2 == 1) {
 		int dark = max(0, bright - 100);
 		SetDrawBright(dark, dark, dark);
@@ -51,6 +62,41 @@ void CharacterDrawer::drawCharacter(const Camera* const camera, int bright) {
 	}
 	else {
 		graphHandle->draw(x, y, ex);
+	}
+	// 顔、黒目、服、靴、手前の髪
+	if (runnerGraph != nullptr) {
+		const GraphHandle* handle = runnerGraph->getFace();
+		if (handle != nullptr) {
+			handle->draw(x, y, ex);
+			SetDrawBright(bright, bright, bright);
+		}
+		handle = runnerGraph->getKutu();
+		if (handle != nullptr) {
+			handle->draw(x, y, ex);
+			SetDrawBright(bright, bright, bright);
+		}
+		handle = runnerGraph->getHuku();
+		if (handle != nullptr) {
+			handle->draw(x, y, ex);
+			SetDrawBright(bright, bright, bright);
+		}
+		handle = runnerGraph->getEye();
+		if (handle != nullptr) {
+			const int* color = runnerGraph->getEyeColor();
+			handle->draw(x, y, ex, color[0], color[1], color[2]);
+			SetDrawBright(bright, bright, bright);
+		}
+		handle = runnerGraph->getFrontHair();
+		if (handle != nullptr) {
+			const int* color = runnerGraph->getHairColor();
+			handle->draw(x, y, ex, color[0], color[1], color[2]);
+			SetDrawBright(bright, bright, bright);
+		}
+		handle = runnerGraph->getAse();
+		if (handle != nullptr) {
+			handle->draw(x, y, ex);
+			SetDrawBright(bright, bright, bright);
+		}
 	}
 
 	// 体力バーの座標をカメラで調整

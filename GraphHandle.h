@@ -39,7 +39,7 @@ public:
 	inline void setReverseY(bool reverse) { m_reverseY = reverse; }
 
 	// 描画する
-	void draw(int x, int y, double ex = 1.0) const;
+	void draw(int x, int y, double ex = 1.0, int r = 255, int g = 255, int b = 255) const;
 
 	void extendDraw(int x1, int y1, int x2, int y2) const ;
 };
@@ -80,6 +80,19 @@ public:
 */
 class RunnerGraphHandle {
 private:
+
+	// 描画する画像
+	GraphHandle* m_backHair;
+	GraphHandle* m_face;
+	GraphHandle* m_eye;
+	GraphHandle* m_frontHair;
+	GraphHandle* m_kutu;
+	GraphHandle* m_huku;
+	GraphHandle* m_ase;
+
+	// 拡大率
+	double m_ex;
+
 	// 色RGB
 	int m_hairRGB[3];
 	int m_eyeRGB[3];
@@ -93,7 +106,8 @@ private:
 	// 立ち状態
 	GraphHandles* stand;
 	GraphHandles* standEye;
-	GraphHandles* standHair;
+	GraphHandles* standFrontHair;
+	GraphHandles* standBackHair;
 
 	// run状態 通常、疲れ、限界
 	GraphHandles* run[3];
@@ -116,6 +130,33 @@ private:
 
 public:
 	RunnerGraphHandle(const char* characterName, double drawEx, char kutu, char huku, int hairRGB[3], int eyeRGB[3]);
+	~RunnerGraphHandle();
+
+	// ゲッタ
+	GraphHandle* getBackHair() const { return m_backHair; }
+	GraphHandle* getFace() const { return m_face; }
+	GraphHandle* getEye() const { return m_eye; }
+	GraphHandle* getFrontHair() const { return m_frontHair; }
+	GraphHandle* getKutu() const { return m_kutu; }
+	GraphHandle* getHuku() const { return m_huku; }
+	GraphHandle* getAse() const { return m_ase; }
+	const int* getHairColor() const { return m_hairRGB; }
+	const int* getEyeColor() const { return m_eyeRGB; }
+
+	// 画像を設定
+	void switchStand();
+	void switchRun(int runIndex, int tired);
+	void switchDead();
+
+	void setReverseX(bool reverse) {
+		if (m_backHair != nullptr){ m_backHair->setReverseX(reverse); }
+		if (m_face != nullptr) { m_face->setReverseX(reverse); }
+		if (m_eye != nullptr) { m_eye->setReverseX(reverse); }
+		if (m_frontHair != nullptr) { m_frontHair->setReverseX(reverse); }
+		if (m_kutu != nullptr) { m_kutu->setReverseX(reverse); }
+		if (m_huku != nullptr) { m_huku->setReverseX(reverse); }
+		if (m_ase != nullptr) { m_ase->setReverseX(reverse); }
+	}
 };
 
 
@@ -126,6 +167,9 @@ class CharacterGraphHandle {
 private:
 	// 表示される画像
 	GraphHandle* m_graphHandle;
+
+	// Runner用の画像
+	RunnerGraphHandle* m_runnerGraphHandle;
 
 	double m_ex;
 
@@ -199,6 +243,9 @@ public:
 	inline int getWide() const { return m_wide; }
 	inline int getHeight() const { return m_height; }
 
+	// Runner
+	inline RunnerGraphHandle* getRunnerGraphHandle() const { return m_runnerGraphHandle; }
+
 	// 画像のゲッタ
 	inline GraphHandles* getSlashHandle() { return m_slashHandles; }
 	inline GraphHandles* getBulletHandle() { return m_bulletHandles; }
@@ -237,7 +284,7 @@ public:
 	// しゃがみ射撃画像をセット
 	void switchSquatBullet(int index = 0);
 	// 走り画像をセット
-	void switchRun(int index = 0);
+	void switchRun(int index = 0, int tired = 0);
 	// 走り射撃画像をセット
 	void switchRunBullet(int index = 0);
 	// 着地画像をセット

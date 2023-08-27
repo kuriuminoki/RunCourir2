@@ -183,6 +183,9 @@ int Character::getHeight() const {
 void Character::setLeftDirection(bool leftDirection) { 
 	m_leftDirection = leftDirection;
 	m_graphHandle->getHandle()->setReverseX(m_leftDirection);
+	if (m_graphHandle->getRunnerGraphHandle() != nullptr) {
+		m_graphHandle->getRunnerGraphHandle()->setReverseX(m_leftDirection);
+	}
 }
 
 // HP減少
@@ -215,7 +218,7 @@ void Character::switchSquat(int cnt) { m_graphHandle->switchSquat(); }
 // しゃがみ画像をセット
 void Character::switchSquatBullet(int cnt) { m_graphHandle->switchSquatBullet(); }
 // 走り画像をセット
-void Character::switchRun(int cnt) { m_graphHandle->switchRun(); }
+void Character::switchRun(int cnt, int tired) { m_graphHandle->switchRun(); }
 // 走り射撃画像をセット
 void Character::switchRunBullet(int cnt) { m_graphHandle->switchRunBullet(); }
 // 着地画像をセット
@@ -294,7 +297,7 @@ void Heart::switchRun(int cnt) {
 }
 
 // 走り射撃画像をセット
-void Heart::switchRunBullet(int cnt) {
+void Heart::switchRunBullet(int cnt, int tired) {
 	int index = (cnt / RUN_ANIME_SPEED) % (m_graphHandle->getRunBulletHandle()->getSize());
 	m_graphHandle->switchRunBullet(index);
 }
@@ -490,15 +493,10 @@ Courir::Courir(const char* name, int hp, int x, int y, int groupId) :
 	// とりあえず立ち画像でスタート
 	switchStand();
 	m_y -= getHeight();
-
-	// Runner用画像
-	int hairRGB[3] = { 255, 255, 255 };
-	int eyeRGB[3] = { 255, 255, 255 };
-	m_runnerGraphHandle = new RunnerGraphHandle(name, m_characterInfo->handleEx(), 'A', 'A', hairRGB, eyeRGB);
 }
 
 Courir::~Courir() {
-	delete m_runnerGraphHandle;
+
 }
 
 Character* Courir::createCopy() {
@@ -506,7 +504,7 @@ Character* Courir::createCopy() {
 }
 
 // 走り画像をセット
-void Courir::switchRun(int cnt) {
+void Courir::switchRun(int cnt, int tired) {
 	int index = (cnt / RUN_ANIME_SPEED) % (m_graphHandle->getRunHandle()->getSize());
-	m_graphHandle->switchRun(index);
+	m_graphHandle->switchRun(index, tired);
 }

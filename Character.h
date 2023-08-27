@@ -219,9 +219,6 @@ public:
 	inline AttackInfo* getAttackInfo() const { return m_attackInfo; }
 	inline CharacterInfo* getCharacterInfo() const { return m_characterInfo; }
 
-	// Runner用の画像
-	virtual RunnerGraphHandle* getRunnerGraphHandle() { return nullptr; }
-
 	// セッタ
 	inline void setHp(int hp) { m_hp = (hp > m_characterInfo->maxHp()) ? m_characterInfo->maxHp() : hp; }
 	inline void setX(int x) { m_x = x; }
@@ -268,7 +265,7 @@ public:
 	// しゃがみ射撃画像をセット
 	virtual void switchSquatBullet(int cnt = 0);
 	// 走り画像をセット
-	virtual void switchRun(int cnt = 0);
+	virtual void switchRun(int cnt = 0, int tired = 0);
 	// 走り射撃画像をセット
 	virtual void switchRunBullet(int cnt = 0);
 	// 着地画像をセット
@@ -336,7 +333,7 @@ public:
 	void switchRun(int cnt = 0);
 
 	// 走り射撃画像をセット
-	void switchRunBullet(int cnt = 0);
+	void switchRunBullet(int cnt = 0, int tired = 0);
 
 	// ジャンプ前画像をセット
 	void switchPreJump(int cnt = 0);
@@ -380,9 +377,6 @@ private:
 	//// 走りアニメのスピード
 	const int RUN_ANIME_SPEED = 6;
 
-	// Runner用の画像
-	RunnerGraphHandle* m_runnerGraphHandle;
-
 public:
 	// コンストラクタ
 	Courir(const char* name, int hp, int x, int y, int groupId);
@@ -396,10 +390,7 @@ public:
 
 	// 画像変更関数のオーバーライド
 	// 走り画像をセット
-	void switchRun(int cnt = 0);
-
-	// Runner用の画像
-	RunnerGraphHandle* getRunnerGraphHandle() { return m_runnerGraphHandle; }
+	void switchRun(int cnt = 0, int tired = 0);
 };
 
 

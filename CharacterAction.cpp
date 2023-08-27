@@ -481,25 +481,25 @@ void StickAction::move(bool right, bool left, bool up, bool down) {
 void StickAction::jump(int cnt) {
 	// ダメージ状態ならジャンプできないためreturn
 	if (damageFlag()) {
-		// 受け身はできる
-		if (cnt == 1 || m_boostCnt > 0) {
-			if (m_boostCnt == 0) {
-				// 受け身をした瞬間
-				m_vy -= m_character_p->getJumpHeight() / 2;
-				m_grand = false;
-				m_preJumpCnt = -1;
-				stopMoveLeft();
-				stopMoveRight();
-				// 効果音
-				if (m_soundPlayer_p != NULL) {
-					m_soundPlayer_p->pushSoundQueue(m_character_p->getPassiveSound(),
-						adjustPanSound(m_character_p->getCenterX(),
-							m_soundPlayer_p->getCameraX()));
-				}
-			}
-			// ダメージ状態が解除されるまではずっとBoost
-			m_boostCnt = BOOST_TIME;
-		}
+		//// 受け身はできる
+		//if (cnt == 1 || m_boostCnt > 0) {
+		//	if (m_boostCnt == 0) {
+		//		// 受け身をした瞬間
+		//		m_vy -= m_character_p->getJumpHeight() / 2;
+		//		m_grand = false;
+		//		m_preJumpCnt = -1;
+		//		stopMoveLeft();
+		//		stopMoveRight();
+		//		// 効果音
+		//		if (m_soundPlayer_p != NULL) {
+		//			m_soundPlayer_p->pushSoundQueue(m_character_p->getPassiveSound(),
+		//				adjustPanSound(m_character_p->getCenterX(),
+		//					m_soundPlayer_p->getCameraX()));
+		//		}
+		//	}
+		//	// ダメージ状態が解除されるまではずっとBoost
+		//	m_boostCnt = BOOST_TIME;
+		//}
 		return;
 	}
 	// 斬撃中はジャンプ不可
@@ -608,12 +608,14 @@ RunnerAction::RunnerAction(Character* character, SoundPlayer* soundPlayer_p) :
 void RunnerAction::switchHandle() {
 	// セット前の画像のサイズ
 	int wide, height;
+	int tired = 2;
 	m_character_p->getHandleSize(wide, height);
 	if (m_grand) { // 地面にいるとき
 		switch (getState()) {
 		case CHARACTER_STATE::STAND: //立ち状態
+		case CHARACTER_STATE::PREJUMP:
 			if (m_runCnt != -1) {
-				m_character_p->switchRun(m_runCnt);
+				m_character_p->switchRun(m_runCnt, tired);
 			}
 			else {
 				m_character_p->switchStand();
@@ -627,7 +629,7 @@ void RunnerAction::switchHandle() {
 	else { // 宙にいるとき
 		switch (getState()) {
 		case CHARACTER_STATE::STAND: //立ち状態(なにもなしの状態)
-			m_character_p->switchRun(m_runCnt);
+			m_character_p->switchRun(m_runCnt, tired);
 			break;
 		case CHARACTER_STATE::DAMAGE:
 			m_character_p->switchDamage();
