@@ -13,6 +13,7 @@
 #include "Brain.h"
 #include "ControllerRecorder.h"
 #include "ObjectLoader.h"
+#include "Game.h"
 #include "DxLib.h"
 #include <algorithm>
 
@@ -277,21 +278,26 @@ void World::eraseRecorder() {
 
 
 // ƒLƒƒƒ‰‚Ìó‘Ô‚ğ•ÏX‚·‚é
-void World::asignedCharacterData(const char* name, int hp) {
+void World::asignedCharacterData(const char* name, CharacterData* data) {
 	size_t size = m_characters.size();
 	for (unsigned i = 0; i < size; i++) {
 		if (name == m_characters[i]->getName()) {
-			m_characters[i]->setHp(hp);
+			m_characters[i]->setHp(data->hp());
+			m_characters[i]->setMaxStamina(data->maxStamina());
+			m_characters[i]->setStamina(data->maxStamina());
+			m_characters[i]->setMaxSpeed(data->maxSpeed());
 		}
 	}
 }
 
 // ƒLƒƒƒ‰‚Ìó‘Ô‚ğ‹³‚¦‚é
-void World::asignCharacterData(const char* name, int& hp) {
+void World::asignCharacterData(const char* name, CharacterData* data) {
 	size_t size = m_characters.size();
 	for (unsigned i = 0; i < size; i++) {
 		if (name == m_characters[i]->getName()) {
-			hp = m_characters[i]->getHp();
+			data->setHp(m_characters[i]->getHp());
+			data->setMaxStamina(m_characters[i]->getMaxStamina());
+			data->setMaxSpeed(m_characters[i]->getMaxSpeed());
 			return;
 		}
 	}

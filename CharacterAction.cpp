@@ -432,14 +432,14 @@ void CharacterAction::afterChangeGraph(int beforeWide, int beforeHeight, int aft
 
 // 歩く ダメージ中、しゃがみ中、壁ぶつかり中は不可
 void StickAction::walk(bool right, bool left) {
-	// 右へ歩くのをやめる
-	if (!right || m_rightLock || m_squat || damageFlag()) {
-		stopMoveRight();
-	}
-	// 左へ歩くのをやめる
-	if (!left || m_leftLock || m_squat || damageFlag()) {
-		stopMoveLeft();
-	}
+	//// 右へ歩くのをやめる
+	//if (!right || m_rightLock || m_squat || damageFlag()) {
+	//	stopMoveRight();
+	//}
+	//// 左へ歩くのをやめる
+	//if (!left || m_leftLock || m_squat || damageFlag()) {
+	//	stopMoveLeft();
+	//}
 	if (damageFlag()) {
 		return;
 	}

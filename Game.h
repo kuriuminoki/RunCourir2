@@ -14,15 +14,38 @@ class CharacterData {
 private:
 	const char* m_name;
 	int m_hp;
+	int m_maxStamina;
+	int m_maxSpeed;
+	int m_hairRGB[3];
+	char m_kutu;
+	char m_huku;
 public:
 	CharacterData(const char* name);
 
 	// ゲッタ
 	inline const char* name() const { return m_name; }
 	inline int hp() const { return m_hp; }
+	inline int maxStamina() const { return m_maxStamina; }
+	inline int maxSpeed() const { return m_maxSpeed; }
+	inline void hairRGB(int hairRGB[3]) const { 
+		hairRGB[0] = m_hairRGB[0];
+		hairRGB[1] = m_hairRGB[1];
+		hairRGB[2] = m_hairRGB[2];
+	}
+	inline char kutu() const { return m_kutu; }
+	inline char huku() const { return m_huku; }
 
 	// セッタ
 	inline void setHp(int hp) { m_hp = hp; }
+	inline void setMaxStamina(int maxStamina) { m_maxStamina = maxStamina; }
+	inline void setMaxSpeed(int maxSpeed) { m_maxSpeed = maxSpeed; }
+	inline void set(int hairRGB[3]) { 
+		m_hairRGB[0] = hairRGB[0];
+		m_hairRGB[1] = hairRGB[1];
+		m_hairRGB[2] = hairRGB[2];
+	}
+	inline void setKutu(char kutu) { m_kutu = kutu; }
+	inline void setHuku(char huku) { m_huku = huku; }
 };
 
 
@@ -43,6 +66,11 @@ private:
 
 	// 音量
 	int m_soundVolume;
+
+	// 所持金
+	int m_money;
+	bool kutu[3];
+	bool huku[3];
 
 public:
 	GameData();

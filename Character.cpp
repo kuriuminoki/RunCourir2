@@ -493,6 +493,11 @@ Courir::Courir(const char* name, int hp, int x, int y, int groupId) :
 	// とりあえず立ち画像でスタート
 	switchStand();
 	m_y -= getHeight();
+
+	// 性能
+	m_maxStamina = 1000;
+	m_stamina = m_maxStamina;
+	m_maxSpeed = 10;
 }
 
 Courir::~Courir() {

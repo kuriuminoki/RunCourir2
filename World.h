@@ -114,10 +114,10 @@ public:
 	void talk();
 
 	// キャラの状態を変更
-	void asignedCharacterData(const char* name, int hp);
+	void asignedCharacterData(const char* name, CharacterData* data);
 
 	// キャラの状態を教える
-	void asignCharacterData(const char* name, int& hp);
+	void asignCharacterData(const char* name, CharacterData* data);
 
 	/*
 	* イベント用

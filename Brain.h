@@ -89,6 +89,51 @@ public:
 };
 
 
+class RunnerBrain :
+	public Brain
+{
+private:
+	// 移動用
+	int m_rightKey, m_leftKey, m_upKey, m_downKey;
+
+	// ジャンプの長さ
+	int m_jumpCnt;
+
+	// 移動目標
+	int m_gx;
+
+public:
+	RunnerBrain();
+
+	Brain* createCopy(std::vector<Character*> characters, const Camera* camera) { return nullptr; }
+
+	void debug(int x, int y, int color) const {};
+
+	// セッタ
+	void setCharacterAction(const CharacterAction* characterAction);
+
+	// 遠距離攻撃の目標座標
+	void bulletTargetPoint(int& x, int& y) {};
+
+	// 移動（上下左右の入力）
+	void moveOrder(int& right, int& left, int& up, int& down);
+
+	void stickOrder(int& right, int& left, int& up, int& down);
+
+	// ジャンプの制御
+	int jumpOrder();
+
+	// しゃがみの制御
+	int squatOrder() { return 0; }
+
+	// 近距離攻撃
+	int slashOrder() { return 0; }
+
+	// 遠距離攻撃
+	int bulletOrder() { return 0; }
+};
+
+
 /*
 * 全く動かないAI
 */

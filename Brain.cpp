@@ -70,6 +70,59 @@ int KeyboardBrain::bulletOrder() {
 }
 
 
+RunnerBrain::RunnerBrain() {
+	m_gx = 10000;
+}
+
+void RunnerBrain::setCharacterAction(const CharacterAction* characterAction) {
+	m_characterAction_p = characterAction;
+}
+
+void RunnerBrain::moveOrder(int& right, int& left, int& up, int& down) {
+	stickOrder(right, left, up, down);
+}
+
+// スティック操作
+void RunnerBrain::stickOrder(int& right, int& left, int& up, int& down) {
+	// 現在地
+	int x = m_characterAction_p->getCharacter()->getX();
+	int y = m_characterAction_p->getCharacter()->getY();
+
+	// 目標に向かって走る
+	if (m_gx > x) {
+		m_rightKey++;
+		m_leftKey = 0;
+	}
+	else {
+		m_rightKey = 0;
+		m_leftKey = 0;
+	}
+
+	// 反映
+	right = m_rightKey;
+	left = m_leftKey;
+	up = m_upKey;
+	down = m_downKey;
+}
+int RunnerBrain::jumpOrder() {
+	// ダメージを食らったらリセット
+	if (m_characterAction_p->getState() == CHARACTER_STATE::DAMAGE) {
+		m_jumpCnt = 0;
+		if (GetRand(120) == 0) { return 1; }
+	}
+
+	// ランダムでジャンプ
+	if (GetRand(99) == 0) { m_jumpCnt = GetRand(15) + 5; }
+
+	// 壁にぶつかったからジャンプ
+	if (m_rightKey > 0 && m_characterAction_p->getRightLock()) { m_jumpCnt = 20; }
+	else if (m_leftKey > 0 && m_characterAction_p->getLeftLock()) { m_jumpCnt = 20; }
+
+	if (m_jumpCnt > 0) { m_jumpCnt--; }
+	return m_jumpCnt == 0 ? 0 : 20 - m_jumpCnt;
+}
+
+
 /*
 * Normal AI
 */

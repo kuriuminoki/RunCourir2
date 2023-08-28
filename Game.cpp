@@ -48,18 +48,14 @@ GameData::GameData(const char* saveFilePath):
 void GameData::asignWorld(World* world) {
 	size_t size = m_characterData.size();
 	for (unsigned int i = 0; i < size; i++) {
-		int hp = m_characterData[i].hp();
-		if (hp == -1) { continue; }
-		world->asignedCharacterData(m_characterData[i].name(), hp);
+		world->asignedCharacterData(m_characterData[i].name(), &m_characterData[i]);
 	}
 }
 
 void GameData::asignedWorld(World* world) {
 	size_t size = m_characterData.size();
 	for (unsigned int i = 0; i < size; i++) {
-		int hp = 0;
-		world->asignCharacterData(m_characterData[i].name(), hp);
-		m_characterData[i].setHp(hp);
+		world->asignCharacterData(m_characterData[i].name(), &m_characterData[i]);
 	}
 }
 

@@ -299,6 +299,13 @@ public:
 
 	// 斬撃攻撃をする(キャラごとに違う) 左を向いているか、今何カウントか
 	virtual Object* slashAttack(bool leftDirection, int cnt, SoundPlayer* soundPlayer) { return NULL; }
+
+	virtual int getMaxStamina() { return 1; }
+	virtual void setMaxStamina(int maxStamina) {  }
+	virtual int getStamina() { return 1; }
+	virtual void setStamina(int stamina) {  }
+	virtual int getMaxSpeed() { return 1; }
+	virtual void setMaxSpeed(int maxSpeed) {  }
 };
 
 
@@ -377,6 +384,13 @@ private:
 	//// 走りアニメのスピード
 	const int RUN_ANIME_SPEED = 6;
 
+	// スタミナ
+	int m_maxStamina;
+	int m_stamina;
+
+	// 走るスピード
+	int m_maxSpeed;
+
 public:
 	// コンストラクタ
 	Courir(const char* name, int hp, int x, int y, int groupId);
@@ -391,6 +405,13 @@ public:
 	// 画像変更関数のオーバーライド
 	// 走り画像をセット
 	void switchRun(int cnt = 0, int tired = 0);
+
+	int getMaxStamina() { return m_maxStamina; }
+	void setMaxStamina(int maxStamina) { m_maxStamina = maxStamina; }
+	int getStamina() { return m_stamina; }
+	void setStamina(int stamina) { m_stamina = stamina; }
+	virtual int getMaxSpeed() { return m_maxSpeed; }
+	virtual void setMaxSpeed(int maxSpeed) { m_maxSpeed = maxSpeed; }
 };
 
 
