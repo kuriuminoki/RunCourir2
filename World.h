@@ -17,6 +17,7 @@ class SoundPlayer;
 class Conversation;
 class Brain;
 class ObjectLoader;
+class CharacterData;
 
 
 class World {
